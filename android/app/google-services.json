@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "631157851012",
+    "firebase_url": "https://feedback-management-b9deb-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "feedback-management-b9deb",
+    "storage_bucket": "feedback-management-b9deb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:631157851012:android:fedcbf93c2934acdbc53d1",
+        "android_client_info": {
+          "package_name": "com.example.feedback_management_system"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "631157851012-aeuih93o6758f4qj5ofehitghpd4e1c7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4j96hd5EFY3dLKFk-J8uxeqAcN3deYRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "631157851012-aeuih93o6758f4qj5ofehitghpd4e1c7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
