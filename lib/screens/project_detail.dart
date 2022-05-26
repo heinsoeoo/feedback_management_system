@@ -63,6 +63,8 @@ class _ProjectDetailState extends State<ProjectDetail> {
             if(feedbacks.length >= 1) {
               myFeedback = feedbacks.where((f) => f.email==email).toList();
               feedbacks.removeWhere((f) => f.email==email);
+              debugPrint("Feedback List length: "+feedbacks.length.toString());
+              debugPrint("myFeedback length: "+myFeedback.length.toString());
               if(myFeedback.length>=1) {
                 addFeedbackVisible = (myFeedback[0].email == email) ? false : true;
               }
@@ -98,17 +100,20 @@ class _ProjectDetailState extends State<ProjectDetail> {
                                 ),
                                 child: Padding(
                                   padding: EdgeInsets.all(10),
-                                  child: Image.network(
-                                    logo,
-                                    loadingBuilder: (BuildContext context, Widget child,
-                                        ImageChunkEvent? loadingProgress) {
-                                      if (loadingProgress == null) {
-                                        return child;
-                                      }
-                                      return Image(
-                                        image: AssetImage('images/loading.gif'),
-                                      );
-                                    },
+                                  child: Hero(
+                                    tag: "Img_$id",
+                                    child: Image.network(
+                                      logo,
+                                      loadingBuilder: (BuildContext context, Widget child,
+                                          ImageChunkEvent? loadingProgress) {
+                                        if (loadingProgress == null) {
+                                          return child;
+                                        }
+                                        return Image(
+                                          image: AssetImage('images/loading.gif'),
+                                        );
+                                      },
+                                    ),
                                   ),
                                 ),
                               ),
@@ -149,11 +154,12 @@ class _ProjectDetailState extends State<ProjectDetail> {
                     Expanded(
                       child: Padding(
                         padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-                        child: (feedbacks.length >= 1)?ListView.builder(
+                        child: (feedbacks.length >= 1 || myFeedback.length >= 1)?ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
-                            itemCount: feedbacks.length,
+                            itemCount: (feedbacks.length==0 && myFeedback.length==1)? 1: feedbacks.length,
                             itemBuilder: (BuildContext context, i) {
+                              debugPrint("Test debug: "+myFeedback.length.toString());
                               if (i==0 && myFeedback.length>=1) {
                                 debugPrint("MyFeedMail: "+myFeedback[0].email);
                                 debugPrint("MyAuthMail: "+email);
@@ -220,7 +226,8 @@ class _ProjectDetailState extends State<ProjectDetail> {
                                         ),
                                       ),
                                     ),
-                                    Padding(
+                                    if(feedbacks.length >= 1)
+                                      Padding(
                                       padding: EdgeInsets.symmetric(vertical: 6),
                                       child: Card(
                                         elevation: 0,
@@ -279,7 +286,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
                                           ),
                                         ),
                                       ),
-                                    )
+                                    ),
                                   ],
                                 );
                               }
@@ -466,6 +473,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
             ),
           ),
         ),
+        myFeedback = [],
         addFeedbackVisible = true
       });
   }

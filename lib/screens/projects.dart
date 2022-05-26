@@ -119,17 +119,20 @@ class _ProjectsState extends State<Projects> {
                                 Container(
                                   width: w*0.2,
                                   height: w*0.2,
-                                  child: Image.network(
-                                    logo,
-                                    loadingBuilder: (BuildContext context, Widget child,
-                                        ImageChunkEvent? loadingProgress) {
-                                      if (loadingProgress == null) {
-                                        return child;
-                                      }
-                                      return Image(
-                                        image: AssetImage('images/loading.gif'),
-                                      );
-                                    },
+                                  child: Hero(
+                                    tag: 'Img_$id',
+                                    child: Image.network(
+                                      logo,
+                                      loadingBuilder: (BuildContext context, Widget child,
+                                          ImageChunkEvent? loadingProgress) {
+                                        if (loadingProgress == null) {
+                                          return child;
+                                        }
+                                        return Image(
+                                          image: AssetImage('images/loading.gif'),
+                                        );
+                                      },
+                                    ),
                                   )
                                 ),
                                 Spacer(),
