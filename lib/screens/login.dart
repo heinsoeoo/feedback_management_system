@@ -71,6 +71,9 @@ class _LoginState extends State<Login> {
                     SizedBox(
                       height: 50,
                       child: TextField(
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
                         keyboardType: TextInputType.emailAddress,
                         controller: emailController,
                         decoration: InputDecoration(
@@ -98,6 +101,9 @@ class _LoginState extends State<Login> {
                     SizedBox(
                       height: 50,
                       child: TextField(
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
                         controller: passwordController,
                         obscureText: true,
                         decoration: InputDecoration(

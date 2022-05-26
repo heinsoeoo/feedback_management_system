@@ -35,7 +35,6 @@ class _ProjectsState extends State<Projects> {
               slivers: [
                 SliverAppBar(
                   pinned: true,
-                  toolbarHeight: 70,
                   expandedHeight: h*0.25,
                   backgroundColor: Colors.deepPurple,
                   flexibleSpace: FlexibleSpaceBar(
@@ -121,7 +120,16 @@ class _ProjectsState extends State<Projects> {
                                   width: w*0.2,
                                   height: w*0.2,
                                   child: Image.network(
-                                    logo
+                                    logo,
+                                    loadingBuilder: (BuildContext context, Widget child,
+                                        ImageChunkEvent? loadingProgress) {
+                                      if (loadingProgress == null) {
+                                        return child;
+                                      }
+                                      return Image(
+                                        image: AssetImage('images/loading.gif'),
+                                      );
+                                    },
                                   )
                                 ),
                                 Spacer(),

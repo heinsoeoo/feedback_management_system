@@ -70,6 +70,9 @@ class _RegisterState extends State<Register> {
                     SizedBox(
                       height: 50,
                       child: TextField(
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
@@ -97,6 +100,9 @@ class _RegisterState extends State<Register> {
                     SizedBox(
                       height: 50,
                       child: TextField(
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
                         controller: passwordController,
                         obscureText: true,
                         decoration: InputDecoration(

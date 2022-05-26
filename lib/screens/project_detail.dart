@@ -33,20 +33,15 @@ class _ProjectDetailState extends State<ProjectDetail> {
   _ProjectDetailState(this.id, this.name, this.logo, this.email);
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    debugPrint("ProjectId: $id");
+    debugPrint("email: $email");
     w = MediaQuery.of(context).size.width;
     h = MediaQuery.of(context).size.height;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        toolbarHeight: 70,
         backgroundColor: Colors.deepPurple,
         elevation: 0,
         // title: Text(
@@ -68,6 +63,9 @@ class _ProjectDetailState extends State<ProjectDetail> {
             if(feedbacks.length >= 1) {
               myFeedback = feedbacks.where((f) => f.email==email).toList();
               feedbacks.removeWhere((f) => f.email==email);
+              if(myFeedback.length>=1) {
+                addFeedbackVisible = (myFeedback[0].email == email) ? false : true;
+              }
             }
 
             return Container(
@@ -80,7 +78,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
                 context: context,
                 child: Column(
                   children: [
-                    SizedBox(height: 70),
+                    Container(height: h*0.08, color: Colors.deepPurple),
                     Container(
                       height: h*0.20,
                       color: Colors.deepPurple,
@@ -98,7 +96,18 @@ class _ProjectDetailState extends State<ProjectDetail> {
                                 ),
                                 child: Padding(
                                   padding: EdgeInsets.all(10),
-                                  child: Image.network(logo),
+                                  child: Image.network(
+                                    logo,
+                                    loadingBuilder: (BuildContext context, Widget child,
+                                        ImageChunkEvent? loadingProgress) {
+                                      if (loadingProgress == null) {
+                                        return child;
+                                      }
+                                      return Image(
+                                        image: AssetImage('images/loading.gif'),
+                                      );
+                                    },
+                                  ),
                                 ),
                               ),
                             ),
@@ -143,8 +152,10 @@ class _ProjectDetailState extends State<ProjectDetail> {
                             shrinkWrap: true,
                             itemCount: feedbacks.length,
                             itemBuilder: (BuildContext context, i) {
-                              addFeedbackVisible = (feedbacks[i].email==email)? false: true;
                               if (i==0 && myFeedback.length>=1) {
+                                debugPrint("MyFeedMail: "+myFeedback[0].email);
+                                debugPrint("MyAuthMail: "+email);
+                                debugPrint(addFeedbackVisible.toString());
                                 return Column(
                                   children: [
                                     Padding(
