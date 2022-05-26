@@ -80,7 +80,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
                   children: [
                     Container(height: h*0.08, color: Colors.deepPurple),
                     Container(
-                      height: h*0.20,
+                      height: h*0.22,
                       color: Colors.deepPurple,
                       child: Padding(
                         padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
@@ -90,6 +90,8 @@ class _ProjectDetailState extends State<ProjectDetail> {
                             Expanded(
                               flex: 2,
                               child: Container(
+                                width: h*0.12,
+                                height: h*0.12,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(20),
@@ -122,7 +124,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
                                       name,
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 28,
+                                        fontSize: 25,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
@@ -133,7 +135,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
                                       "This project is about $name",
                                       style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 18,
+                                        fontSize: 15,
                                       ),
                                     ),
                                   ),

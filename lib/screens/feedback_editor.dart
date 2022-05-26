@@ -46,7 +46,6 @@ class _FeedbackEditorState extends State<FeedbackEditor> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        toolbarHeight: 70,
         title: Text(appTitle),
         actions: [
           OutlinedButton(
