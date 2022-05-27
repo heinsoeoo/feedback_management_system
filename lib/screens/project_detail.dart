@@ -64,10 +64,8 @@ class _ProjectDetailState extends State<ProjectDetail> {
               myFeedback = feedbacks.where((f) => f.email==email).toList();
               feedbacks.removeWhere((f) => f.email==email);
               debugPrint("Feedback List length: "+feedbacks.length.toString());
-              debugPrint("myFeedback length: "+myFeedback.length.toString());
-              if(myFeedback.length>=1) {
-                addFeedbackVisible = (myFeedback[0].email == email) ? false : true;
-              }
+              debugPrint("myFeedback length init: "+myFeedback.length.toString());
+              addFeedbackVisible = (myFeedback.length>=1)? false : true;
             }
 
             return Container(
@@ -161,7 +159,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
                             shrinkWrap: true,
                             itemCount: (feedbacks.length==0 && myFeedback.length==1)? 1: feedbacks.length,
                             itemBuilder: (BuildContext context, i) {
-                              debugPrint("Test debug: "+myFeedback.length.toString());
+                              debugPrint("MyFeedback length listview: "+myFeedback.length.toString());
                               if (i==0 && myFeedback.length>=1) {
                                 debugPrint("MyFeedMail: "+myFeedback[0].email);
                                 debugPrint("MyAuthMail: "+email);
