@@ -80,74 +80,76 @@ class _ProjectDetailState extends State<ProjectDetail> {
                 context: context,
                 child: Column(
                   children: [
-                    Container(height: h*0.08, color: Colors.deepPurple),
+                    Container(height: h*0.1, color: Colors.deepPurple),
                     Container(
-                      height: h*0.22,
+                      height: h*0.24,
                       color: Colors.deepPurple,
                       child: Padding(
                         padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: Container(
-                                width: h*0.12,
-                                height: h*0.12,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.all(10),
-                                  child: Hero(
-                                    tag: "Img_$id",
-                                    child: Image.network(
-                                      logo,
-                                      loadingBuilder: (BuildContext context, Widget child,
-                                          ImageChunkEvent? loadingProgress) {
-                                        if (loadingProgress == null) {
-                                          return child;
-                                        }
-                                        return Image(
-                                          image: AssetImage('images/loading.gif'),
-                                        );
-                                      },
+                        child: Center(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                flex: 2,
+                                child: Container(
+                                  width: h*0.12,
+                                  height: h*0.12,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Hero(
+                                      tag: "Img_$id",
+                                      child: Image.network(
+                                        logo,
+                                        loadingBuilder: (BuildContext context, Widget child,
+                                            ImageChunkEvent? loadingProgress) {
+                                          if (loadingProgress == null) {
+                                            return child;
+                                          }
+                                          return Image(
+                                            image: AssetImage('images/loading.gif'),
+                                          );
+                                        },
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            SizedBox(width: 20),
-                            Expanded(
-                              flex: 5,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      name,
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 25,
-                                        fontWeight: FontWeight.w600,
+                              SizedBox(width: 20),
+                              Expanded(
+                                flex: 5,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        name,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(height: 10),
-                                  Expanded(
-                                    child: Text(
-                                      "This project is about $name",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
+                                    SizedBox(height: 10),
+                                    Expanded(
+                                      child: Text(
+                                        "This project is about $name",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
