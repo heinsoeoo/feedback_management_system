@@ -64,7 +64,7 @@ class _ProjectsState extends State<Projects> {
                           Text(
                             "Welcome $email",
                             style: TextStyle(
-                                fontSize: 18
+                                fontSize: 16
                             ),
                           ),
                           SizedBox(height: 10),
@@ -72,7 +72,7 @@ class _ProjectsState extends State<Projects> {
                             child: Text(
                               "The following projects were developed from our company",
                               style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 13,
                                   color: Colors.grey.withOpacity(0.8)
                               ),
                             ),

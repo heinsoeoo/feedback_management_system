@@ -20,7 +20,7 @@ class _RegisterState extends State<Register> {
     double h = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       body: Container(
         width: w,
         height: h,
