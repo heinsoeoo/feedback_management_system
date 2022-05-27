@@ -62,7 +62,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
             final feedbacks = snapshot.data!;
             if(feedbacks.length >= 1) {
               myFeedback = feedbacks.where((f) => f.email==email).toList();
-              feedbacks.removeWhere((f) => f.email==email);
+              // feedbacks.removeWhere((f) => f.email==email);
               debugPrint("Feedback List length: "+feedbacks.length.toString());
               debugPrint("myFeedback length init: "+myFeedback.length.toString());
               addFeedbackVisible = (myFeedback.length>=1)? false : true;
@@ -154,12 +154,24 @@ class _ProjectDetailState extends State<ProjectDetail> {
                     Expanded(
                       child: Padding(
                         padding: EdgeInsets.only(top: 20, left: 20, right: 20),
-                        child: (feedbacks.length >= 1 || myFeedback.length >= 1)?ListView.builder(
+                        child: (feedbacks.length >= 1)?ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
-                            itemCount: (feedbacks.length==0 && myFeedback.length==1)? 1: feedbacks.length,
+                            itemCount: (myFeedback.length>=1)? feedbacks.length-1: feedbacks.length,
                             itemBuilder: (BuildContext context, i) {
-                              debugPrint("MyFeedback length listview: "+myFeedback.length.toString());
+                              if (myFeedback.length>=1) {
+                                // List<FeedbackModel> tempFeedback = feedbacks.where((f) => f.email == email).toList();
+                                // if (tempFeedback.isNotEmpty) {
+                                //   myFeedback = tempFeedback;
+                                // }
+                                feedbacks.removeWhere((f) => f.email == email);
+                                // debugPrint("Feedback List length2: " +
+                                //     feedbacks.length.toString());
+                                // debugPrint("myFeedback length init2: " +
+                                //     myFeedback.length.toString());
+                                // addFeedbackVisible = (myFeedback.length >= 1) ? false : true;
+                              }
+                              debugPrint("myFeedback length Listview: "+myFeedback.length.toString());
                               if (i==0 && myFeedback.length>=1) {
                                 debugPrint("MyFeedMail: "+myFeedback[0].email);
                                 debugPrint("MyAuthMail: "+email);
