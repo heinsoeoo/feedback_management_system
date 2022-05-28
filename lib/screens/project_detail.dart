@@ -157,7 +157,7 @@ class _ProjectDetailState extends State<ProjectDetail> {
                         child: (feedbacks.length >= 1)?ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
-                            itemCount: (myFeedback.length>=1)? feedbacks.length-1: feedbacks.length,
+                            itemCount: (myFeedback.length>=1 || feedbacks.length==1)? 1: feedbacks.length,
                             itemBuilder: (BuildContext context, i) {
                               if (myFeedback.length>=1) {
                                 // List<FeedbackModel> tempFeedback = feedbacks.where((f) => f.email == email).toList();
